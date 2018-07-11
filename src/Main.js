@@ -1,23 +1,39 @@
 import React, { Component } from "react";
 import logo from './logo.svg';
+import {
+    Route,
+    NavLink,
+    HashRouter
+} from "react-router-dom";
+
+import Home from "./components/Home";
+import Stuff from "./components/Stuff";
+import Projects from "./components/Projects";
+import Contact from "./components/Contact";
+
+
 
 class Main extends Component {
   render() {
     return (
-        <div>
-          <h1>Simple SPA</h1>
+        <HashRouter>
+            <div>
+              <h1>Goran Aviani</h1>
 
-            <header><img src={logo} className="App-logo" alt="logo" /></header>
-          <ul className="header">
-            <li><a href="/">Home</a></li>
-            <li><a href="/stuff">Stuff I do</a></li>
-            <li><a href="/projects">Projects</a></li>
-            <li><a href="/contact">Contact</a></li>
-          </ul>
-          <div className="content">
-
-          </div>
-        </div>
+              <ul className="header">
+                <li><NavLink to="/">Home</NavLink></li>
+                <li><NavLink to="/stuff">Stuff I do</NavLink></li>
+                <li><NavLink to="/projects">Projects</NavLink></li>
+                <li><NavLink to="/contact">Contact</NavLink></li>
+              </ul>
+              <div className="content">
+                 <Route path="/" component={Home}/>
+                 <Route path="/stuff" component={Stuff}/>
+                 <Route path="/projects" component={Projects}/>
+                <Route path="/contact" component={Contact}/>
+              </div>
+            </div>
+        </HashRouter>
     );
   }
 }
